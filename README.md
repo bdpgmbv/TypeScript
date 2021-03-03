@@ -14,6 +14,9 @@ Core Types
 4. OBJECT: {age:30}
 5. ARRAY: [1, 2, 3]
 6. TUPLE: [1,2] (fixed length array, and fixed type)
+7. ENUM: enum { NEW, OLD } (automatically enumerated global constant identifiers)
+8. ANY; ( avoid as much as possible, it takes away all the advantages that typescript gives us)
+9. UNION TYPES: input1: number | string | boolean
 
 * eg: function add(n1: number, n2: number, showResult: boolean, phrase: string){ }
 * let number1 = 5; (We dont have explicit type assignments here, because TypeScript has a built in feature called type inference. This means TypeScript does its best to understand which type you have in a certain variable or constant)
@@ -29,3 +32,16 @@ Core Types
            } = {
             role: [2, 'author']
            };
+// Tuple tells javascript that i want a special array with exactly the number of elements and types that I specify.
+
+* ENUM : enum Role { ADMIN, READ_ONLY, AUTHOR }; ( ACCESSING => Role.ADMIN )  (OR)  enum Role { ADMIN='ADMIN', READ_ONLY=100, AUTHOR='AUTHOR' };
+
+* UNIONS : if we have some place in our application, be that a parameter of a function or a constant or a variable, where we accept two different kinds of values. Well then a union type can help us. to tell typescript we are fine with either a number or a string, we do use a "|" => 
+```
+function combine (input1 : number | string, input2: number | string) {
+let result;
+if(typeof input1 === 'number' && typeof input2 === 'number') result = input1 + input2;
+else result = input1.toString() + input2.toString();
+return result;
+}
+```
