@@ -20,7 +20,10 @@ Core Types
 10. LITERAL TYPES : resultConversion: 'as-number' | 'as-string'
 11. ALIASES : type Combinable = number | string; or type ConversionDescriptor = 'as-number' | 'as-string'; type User = { name: string; age: number };
 12. function RETURN TYPES & VOID : function printResult(num: number): void { console.log('Result:'+num); } (you can define function return type explicitly or typescript infers the same) ```Undefined is a type in TypeScript``` 
-13. functions as types : (WE SHOULD MATCH THE TYPES) ```let combineValues: (a: number, b: number) => number;``` ```combineValues = add;``` ```function add(n1: number, n2: number){ return n1 + n2; }```
+13. functions as types : (WE SHOULD MATCH THE TYPES) ```let combineValues: (a: number, b: number) => number;``` ```combineValues = add;``` ```function add(n1: number, n2: number){ return n1 + n2; }``` ```console.log(combineValues(8,8));```
+14. CALLBACKS : ```function addAndHandle(n1: number, n2:number, cb:(num: number)=>void) { const result=n1+n2; cb(result); }``` ```addAndHandle(10,20,(result)=>{ console.log(result); });```
+15. UNKNOWN : "unknown" is a better choice than "any". ```let userInput = unknown; let username = string;``` ```userInput = 'Max'; if(typeOf userInput === 'string') { username = userInput; }```
+16. NEVER : 
 
 * eg: function add(n1: number, n2: number, showResult: boolean, phrase: string){ }
 * let number1 = 5; (We dont have explicit type assignments here, because TypeScript has a built in feature called type inference. This means TypeScript does its best to understand which type you have in a certain variable or constant)
