@@ -17,6 +17,10 @@ Core Types
 7. ENUM: enum { NEW, OLD } (automatically enumerated global constant identifiers)
 8. ANY; ( avoid as much as possible, it takes away all the advantages that typescript gives us)
 9. UNION TYPES: input1: number | string | boolean
+10. LITERAL TYPES : resultConversion: 'as-number' | 'as-string'
+11. ALIASES : type Combinable = number | string; or type ConversionDescriptor = 'as-number' | 'as-string'; type User = { name: string; age: number };
+12. function RETURN TYPES & VOID : function printResult(num: number): void { console.log('Result:'+num); } (you can define function return type explicitly or typescript infers the same) ```Undefined is a type in TypeScript``` 
+13. functions as types : (WE SHOULD MATCH THE TYPES) ```let combineValues: (a: number, b: number) => number;``` ```combineValues = add;``` ```function add(n1: number, n2: number){ return n1 + n2; }```
 
 * eg: function add(n1: number, n2: number, showResult: boolean, phrase: string){ }
 * let number1 = 5; (We dont have explicit type assignments here, because TypeScript has a built in feature called type inference. This means TypeScript does its best to understand which type you have in a certain variable or constant)
@@ -45,3 +49,6 @@ else result = input1.toString() + input2.toString();
 return result;
 }
 ```
+* LITERAL TYPE :  function combine (input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-string' ) (we want a string for result conversion, but it has to be one of these two values, any other string value will not be allowed)
+
+* ALIASES : "type" keyword is used. eg: type Combinable = number | string; => function Combine(input1: Combinable, input2: Combinable){} (Saves extra code). type User = { name: string; age: number }; => function isOlder(user: User, checkAge: number) { return checkAge > user.age; }
