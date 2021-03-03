@@ -23,7 +23,7 @@ Core Types
 13. functions as types : (WE SHOULD MATCH THE TYPES) ```let combineValues: (a: number, b: number) => number;``` ```combineValues = add;``` ```function add(n1: number, n2: number){ return n1 + n2; }``` ```console.log(combineValues(8,8));```
 14. CALLBACKS : ```function addAndHandle(n1: number, n2:number, cb:(num: number)=>void) { const result=n1+n2; cb(result); }``` ```addAndHandle(10,20,(result)=>{ console.log(result); });```
 15. UNKNOWN : "unknown" is a better choice than "any". ```let userInput = unknown; let username = string;``` ```userInput = 'Max'; if(typeOf userInput === 'string') { username = userInput; }```
-16. NEVER : 
+16. NEVER : Another type that functions can return. ``` function generateError(message: string, code: number): never { throw {message: message, errorCode: code} }``` ```generateError('An error occurred!', 500);``` this function esssentially never produces a value. (You can be very clear and explicitly specify never as the return type to make it really clear that this never returns anything. Code quality purposes) Another function that never returns anything is function with the infinite loop: ``` while(true) {} ```
 
 * eg: function add(n1: number, n2: number, showResult: boolean, phrase: string){ }
 * let number1 = 5; (We dont have explicit type assignments here, because TypeScript has a built in feature called type inference. This means TypeScript does its best to understand which type you have in a certain variable or constant)
