@@ -33,3 +33,5 @@ button.addEventListener("click", function() {
 });
 
 // compile it using "tsc practice.ts"
+// Always import JS files because browser cant run TS => in the script tag in index.html
+// Install extensions: ESlint, path Intellisense, Prettier-code formatter, tslint
