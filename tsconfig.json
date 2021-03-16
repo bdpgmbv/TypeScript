@@ -1,1 +1,45 @@
-
+{
+  "compilerOptions": {
+    "target": "es5", // for which target JS version you want to compile the code
+    "lib": [ // Allows you to specify which library files to be included 
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true, // you can also include JS files in the compilation, with allowJS a JS file will be compiled by typescript. 
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true, // enables all strict type checking options
+    // either set "strict" to true or set all the below to true "noImplicitAny": false, "strictNullChecks": false, "strictFunctionTypes": false, "strictBindCallApply": false, "strictPropertyInitialization": false, "noImplicitThis": false, "alwaysStrict": false,
+    // "noImplicitAny": true, // It ensures that we have to be clear about our parameters about the values we're working within our code.
+    // "strictNullChecks": true, // strict regarding how you access and work with values that might potentially hold a null value and button here might be null.
+    // "strictBindCallApply": true, // very useful behavior that makes sure that you dont accidentally use bind call or apply a way that does not work with your code
+    // "noImplicitThis": true, // TS tries to warn you if you use "this" keyword in a place where it's not clear what it refers to
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true, // you dont want to generate JS files when you compile 
+    "jsx": "react-jsx", // helps with react.js 
+    // "sourceMap": false // helps with debugging and development. with sourceMap true => In "google dev tools -> inspect", we can see our JS files as well as TS files, it also generates bridging files in our folder with extension .js.map
+    // "outDir": "./dist", // after compiling, the JS files will be placed in this folder
+    // "rootDir": "./" // specify the root directory of the input files, same as "include" property
+    // "removeComments": true // All the comments will be removed in the Compiled JS files 
+    // "noEmitOnError": true // set this if you dont want to generate any JS files when you have errors in your TS file -> report any potential errors without actually creating an output
+    // "downlevelIteration": true // gives you more exact compilation which will work in niche cases, you should only turn it on if yiu have loops and you see that your generated code suddenly behaves differenty than it should.
+    // "noUnusedLocals": true, // TS will complain if we have unused variables 
+    // "noUnusedParameters": true, // TS will complain if we have unused paramters in functions 
+    // "noImplicitReturns": true // we will have errors when we have a function when it sometimes returns something and sometimes it does not
+  },
+  "include": [ // tell typescript which files you want to include in the compilation process
+    "src"
+  ],
+  "exclude": [ // what you give here are paths to files that should not be included in computation when you run TSC on the entire project
+    "*.dev.ts",
+    "**/*.dev.ts",
+    "node_modules" // if you dont specify "exclude" at all, node_modules is automatically excluded. But if you specify "exclude" you should also specify node_modules
+  ]
+}
