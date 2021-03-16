@@ -36,7 +36,7 @@ button.addEventListener("click", function() {
 // Always import JS files because browser cant run TS => in the script tag in index.html
 // Install extensions: ESlint, path Intellisense, Prettier-code formatter, tslint
 
-// ***************************************************************************************************************************************************************//
+//***************************************************************************************************************************************************************//
 
 // TypeScript helps before the code get compiled.
 // To avoid any errors: give the type like => n1: number
@@ -52,7 +52,7 @@ const number2 = 2.8;
 const result = add(number1, number2);
 console.log(result);
 
-// ***************************************************************************************************************************************************************//
+//***************************************************************************************************************************************************************//
 
 // Variable Assignment:
 
@@ -78,7 +78,7 @@ const person: object = {
 
 console.log(person.name);
 
-// ***************************************************************************************************************************************************************//
+//***************************************************************************************************************************************************************//
 
 // Array, Array of Strings Assignment and looping through
 const person = {
@@ -97,7 +97,7 @@ for (const hobby of person.hobbies) {
   // console.log(hobby.map()); // !!! ERROR, because map works only on arrays and here we are applying it on string !!!
 }
 
-// ***************************************************************************************************************************************************************//
+//***************************************************************************************************************************************************************//
 
 // Tuple Assignment
 
@@ -118,7 +118,7 @@ const person: {
 // If you have a scenario where you need exactly x amount of values in an array and you know the type of each value in advance, 
 // then you might want to consider a tuple instead of an array to bring strightness into your app, to be even more clearer - the type of data you are working with and type of data you are expecting
 
-// ***************************************************************************************************************************************************************//
+//***************************************************************************************************************************************************************//
 
 // ENUM usage
 // enum Role { ADMIN, READ_ONLY, AUTHOR }; // ADMIN will be 1, READ_ONLY will be 2, AUTHOR will be 3
@@ -136,7 +136,7 @@ if (person.role === Role.AUTHOR) {
   console.log('is author');
 }
 
-// ***************************************************************************************************************************************************************//
+//***************************************************************************************************************************************************************//
 // UNION Types usage 
 
 function combine(input1: number | string, input2: number | string) {
@@ -154,7 +154,7 @@ console.log(combinedAges);
 const combinedNames = combine('Max', 'Anna');
 console.log(combinedNames);
 
-// ***************************************************************************************************************************************************************//
+//***************************************************************************************************************************************************************//
 // Literal Types Usage 
 
 function combine(
@@ -178,7 +178,7 @@ console.log(combinedStringAges);
 const combinedNames = combine('Max', 'Anna', 'as-text');
 console.log(combinedNames);
 
-// ***************************************************************************************************************************************************************//
+//***************************************************************************************************************************************************************//
 // ALIASES usage
 // use the "type" keyword to create the aliases  
 
@@ -205,3 +205,23 @@ const combinedStringAges = combine('30', '26', 'as-number');
 console.log(combinedStringAges);
 const combinedNames = combine('Max', 'Anna', 'as-text');
 console.log(combinedNames);
+
+//***************************************************************************************************************************************************************//
+// Return Types: String/void
+
+function add(n1:number, n2: number): number { // function add(n1:number, n2: number): number => (return type of the function)
+  return n1 + n2;
+}
+
+function printResult(num: number): void { // void is when the function doesnt have a return statement
+  console.log('Result: ' + num);
+}
+
+function printResult(num: number): undefined { // undefined is when the function doesnt return anything
+  console.log('Result: ' + num);
+  return;
+}
+
+let someValue: undefined; // Undefined is a valid type in typescript
+
+//***************************************************************************************************************************************************************//
