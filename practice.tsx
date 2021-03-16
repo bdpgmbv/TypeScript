@@ -115,3 +115,20 @@ const person: {
 // person.role[1] = 10; => ERROR
 // If you have a scenario where you need exactly x amount of values in an array and you know the type of each value in advance, 
 // then you might want to consider a tuple instead of an array to bring strightness into your app, to be even more clearer - the type of data you are working with and type of data you are expecting
+
+
+// ENUM usage
+// enum Role { ADMIN, READ_ONLY, AUTHOR }; // ADMIN will be 1, READ_ONLY will be 2, AUTHOR will be 3
+// enum Role { ADMIN = 5, READ_ONLY, AUTHOR }; // ADMIN will be 5, READ_ONLY will be 6, AUTHOR will be 6
+enum Role { ADMIN = 'ADMIN', READ_ONLY = 100, AUTHOR = 'AUTHOR' }; // we can even assign any value/number to them 
+
+const person = {
+  name: 'Maximilian',
+  age: 30,
+  hobbies: ['Sports', 'Cooking'],
+  role: Role.ADMIN
+};
+
+if (person.role === Role.AUTHOR) {
+  console.log('is author');
+}
