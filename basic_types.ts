@@ -53,7 +53,6 @@ const result = add(number1, number2);
 console.log(result);
 
 //***************************************************************************************************************************************************************//
-
 // Variable Assignment:
 
 let number1: number = 5; // or 
@@ -79,8 +78,8 @@ const person: object = {
 console.log(person.name);
 
 //***************************************************************************************************************************************************************//
-
 // Array, Array of Strings Assignment and looping through
+
 const person = {
   name: 'Maximilian',
   age: 30,
@@ -98,7 +97,6 @@ for (const hobby of person.hobbies) {
 }
 
 //***************************************************************************************************************************************************************//
-
 // Tuple Assignment
 
 const person: {
@@ -119,8 +117,8 @@ const person: {
 // then you might want to consider a tuple instead of an array to bring strightness into your app, to be even more clearer - the type of data you are working with and type of data you are expecting
 
 //***************************************************************************************************************************************************************//
-
 // ENUM usage
+
 // enum Role { ADMIN, READ_ONLY, AUTHOR }; // ADMIN will be 1, READ_ONLY will be 2, AUTHOR will be 3
 // enum Role { ADMIN = 5, READ_ONLY, AUTHOR }; // ADMIN will be 5, READ_ONLY will be 6, AUTHOR will be 6
 enum Role { ADMIN = 'ADMIN', READ_ONLY = 100, AUTHOR = 'AUTHOR' }; // we can even assign any value/number to them 
@@ -225,8 +223,8 @@ function printResult(num: number): undefined { // undefined is when the function
 let someValue: undefined; // Undefined is a valid type in typescript
 
 //***************************************************************************************************************************************************************//
-
 // Function types Usage 
+
 function add(n1: number, n2: number) {
   return n1 + n2;
 }
@@ -236,8 +234,8 @@ combineValues = add;
 console.log(combineValues(8, 8));
 
 //***************************************************************************************************************************************************************//
-
 // Function Types with callback usage
+
 function addAndHandle(n1: number, n2: number, cb: (num: number) => void) { // cb is the callback function, that takes number as input and returns void 
   const result = n1 + n2;
   cb(result);
@@ -248,21 +246,29 @@ addAndHandle(10, 20, (result) => {
 });
 
 //***************************************************************************************************************************************************************//
+// "unknown" assignment & usage
 
+let userInput: unknown;
+userInput = 5;
+userInput = 'Max';
 
-//***************************************************************************************************************************************************************//
+let userName: string;
 
-//***************************************************************************************************************************************************************//
+// userName = userInput; // throws error, because userInput can be of any type and hence it cant be assigned to a "string" type
+// So to clear the error, we follow the below approach 
 
-
-//***************************************************************************************************************************************************************//
-
-//***************************************************************************************************************************************************************//
-
-
-//***************************************************************************************************************************************************************//
-
-//***************************************************************************************************************************************************************//
-
+if (typeof userInput === 'string') {
+  userName = userInput;
+}
 
 //***************************************************************************************************************************************************************//
+// "never" type usage 
+
+// you wanna reach out to one function, thats builds error object for you and throws the error
+// this function never produces a value, and hence the return type is "never"
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+  // while (true) {} // Another example that will never return is an infinte loop
+}
+
+generateError('An error occurred!', 500);
