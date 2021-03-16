@@ -78,6 +78,7 @@ const person: object = {
 
 console.log(person.name);
 
+// ***************************************************************************************************************************************************************//
 
 // Array, Array of Strings Assignment and looping through
 const person = {
@@ -96,6 +97,7 @@ for (const hobby of person.hobbies) {
   // console.log(hobby.map()); // !!! ERROR, because map works only on arrays and here we are applying it on string !!!
 }
 
+// ***************************************************************************************************************************************************************//
 
 // Tuple Assignment
 
@@ -116,6 +118,7 @@ const person: {
 // If you have a scenario where you need exactly x amount of values in an array and you know the type of each value in advance, 
 // then you might want to consider a tuple instead of an array to bring strightness into your app, to be even more clearer - the type of data you are working with and type of data you are expecting
 
+// ***************************************************************************************************************************************************************//
 
 // ENUM usage
 // enum Role { ADMIN, READ_ONLY, AUTHOR }; // ADMIN will be 1, READ_ONLY will be 2, AUTHOR will be 3
@@ -132,3 +135,48 @@ const person = {
 if (person.role === Role.AUTHOR) {
   console.log('is author');
 }
+
+// ***************************************************************************************************************************************************************//
+// UNION Types usage 
+
+function combine(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === 'number' && typeof input2 === 'number') {
+    result = input1 + input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
+}
+
+const combinedAges = combine(30, 26);
+console.log(combinedAges);
+
+const combinedNames = combine('Max', 'Anna');
+console.log(combinedNames);
+
+// ***************************************************************************************************************************************************************//
+// Literal Types Usage 
+
+function combine(
+  input1: number | string,
+  input2: number | string,
+  resultConversion: 'as-number' | 'as-text' // Union of Literal Types, useful for more stable coding patterns 
+) {
+  let result;
+  if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') { 
+    result = +input1 + +input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
+}
+
+const combinedAges = combine(30, 26, 'as-number');
+console.log(combinedAges);
+
+const combinedStringAges = combine('30', '26', 'as-number');
+console.log(combinedStringAges);
+
+const combinedNames = combine('Max', 'Anna', 'as-text');
+console.log(combinedNames);
