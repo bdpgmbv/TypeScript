@@ -207,4 +207,40 @@ if (userInputElement) {
 }
 
 // ************************************************************************************************************************************************************** //
-// 
+// Index Types
+// I need an Object where I'm pretty clear regarding the value type it should be a string, but where i dont know in advance how many properties I will have and which name the properties will have
+// to define a Index type, use Square Brackets here. 
+// with that i am saying i donno the exact property name, i also dont know the exact property count.
+
+interface ErrorContainer { // { email: 'Not a valid email', username: 'Must start with a character!' }
+  [prop: string]: string; // Every property which is added to this object which is based on error container must have a property name which can be interpreted as a string and value for that property also must be a string 
+}
+
+const errorBag: ErrorContainer = {
+  email: 'Not a valid email!',
+  username: 'Must start with a capital character!'
+};
+
+// ************************************************************************************************************************************************************** //
+// Function Overloads
+
+type Combinable = string | number;
+type Numeric = number | boolean;
+
+type Universal = Combinable & Numeric;
+
+// Function Overload 
+function add(a: number, b: number): number // Now TS knows if i get two numbers the return type will be a number 
+function add(a: string, b: string): string
+function add(a: string, b: number): string
+function add(a: number, b: string): string
+function add(a: Combinable, b: Combinable) { // The return tyoe TS infers here is also combinable. But thats not really true
+  if (typeof a === 'string' || typeof b === 'string') { // If we pass in atleast one string, our return type will be string, if we pass in 2 numbers our return type will be number
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+
+const result = add(1,5); // The result you get here is of Type combinable - the consequence of this is that typeScript does not know whether result is a number or string
+const result1 = add('Max','Schwarz'); // If i pass in strings i get combinable as a result type. The consquence here is - i cant call string functions on the result 
+result.split(''); // I cant call this, i get an error, function overload can help us
