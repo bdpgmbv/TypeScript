@@ -244,3 +244,28 @@ function add(a: Combinable, b: Combinable) { // The return tyoe TS infers here i
 const result = add(1,5); // The result you get here is of Type combinable - the consequence of this is that typeScript does not know whether result is a number or string
 const result1 = add('Max','Schwarz'); // If i pass in strings i get combinable as a result type. The consquence here is - i cant call string functions on the result 
 result.split(''); // I cant call this, i get an error, function overload can help us
+
+// ************************************************************************************************************************************************************** //
+// Optional Chaining - Avoiding "IF" checks
+
+const fetchedUserData = {
+  id: 'u1',
+  name: 'Max',
+  job: {title: 'CEO', description: 'My own company'}
+};
+
+console.log(fetchedUserData?.job?.title);
+
+// ************************************************************************************************************************************************************** //
+// Nullish Coalescing - you have some data, where you dont know with certainity whether its null or undefined or whether its actually a valid piece of data.
+// ?? => Nullish Coalescing operator            
+            
+const userInput = undefined;
+const storedData = userInput ?? 'DEFAULT'; // if its null or undefined it will display result as "default"
+console.log(storedData);        
+            
+const userInput = '';
+const storedData = userInput ?? 'DEFAULT'; // the result will be a blank line as it is not null and its not undefined !
+console.log(storedData);  
+            
+            // ************************************************************************************************************************************************************** //
