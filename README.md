@@ -55,3 +55,5 @@ return result;
 * LITERAL TYPE :  function combine (input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-string' ) (we want a string for result conversion, but it has to be one of these two values, any other string value will not be allowed)
 
 * ALIASES : "type" keyword is used. eg: type Combinable = number | string; => function Combine(input1: Combinable, input2: Combinable){} (Saves extra code). type User = { name: string; age: number }; => function isOlder(user: User, checkAge: number) { return checkAge > user.age; }
+
+* INTERFACE: is used to describe a structure of an object
