@@ -160,3 +160,51 @@ useVehicle(v1);
 useVehicle(v2);
 
 // ************************************************************************************************************************************************************** //
+// Type Guards- discriminated Unions- with Interfaces 
+
+interface Bird {
+  type: 'bird';
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: 'horse';
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+  let speed;
+  switch (animal.type) {
+    case 'bird':
+      speed = animal.flyingSpeed;
+      break;
+    case 'horse':
+      speed = animal.runningSpeed;
+  }
+  console.log('Moving at speed: ' + speed);
+}
+
+moveAnimal({type: 'bird', flyingSpeed: 10});
+
+// ************************************************************************************************************************************************************** //
+// Type Casting
+
+// index.html
+<body>
+  <input type="text" id="user-input">
+</body>
+
+// "!" tells it will never yield null
+const userInputElement = document.getElementById('user-input')! as HTMLInputElement; // this => "as HTMLInputElement" tells TS that expresion in front of it will yield a value of type HTMLInputElement 
+userInputElement.value = 'Hi there!';
+
+// You can use the below if you can expect null values
+const userInputElement = document.getElementById('user-input');
+if (userInputElement) {
+  (userInputElement as HTMLInputElement).value = 'Hi there!';
+}
+
+// ************************************************************************************************************************************************************** //
+// 
